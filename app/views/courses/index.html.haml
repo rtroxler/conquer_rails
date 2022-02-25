@@ -1,8 +1,6 @@
 %p{:style => "color: green"}= notice
-%h1 Courses
 #courses
   - @courses.each do |course|
-    = render course
+    = render course, locals: { with_lessons: false }
     %p
       = link_to "Show this course", course
-= link_to "New course", new_course_path

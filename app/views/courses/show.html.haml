@@ -1,8 +1,26 @@
 %p{:style => "color: green"}= notice
 = render @course
+
+- @course.lessons.each do |lesson|
+  %h3= lesson.title
+  %p= lesson.description
+
+%h4 Add a Lesson:
+= form_for [@course, Lesson.new], html: { id: 'lesson-form' } do |f|
+  %p
+    = f.label :title
+    %br
+    = f.text_field :title
+
+  %p
+    = f.label :description
+    %br
+    = f.text_field :description
+
+  = f.submit 'Submit'
+
+
 %div
   = link_to "Edit this course", edit_course_path(@course)
   |
   \#{link_to "Back to courses", courses_path}
-  
-  \#{button_to "Destroy this course", @course, method: :delete}
