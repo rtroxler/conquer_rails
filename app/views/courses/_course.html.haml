@@ -1,15 +1,10 @@
 - with_lessons = false unless defined?(with_lessons)
 %div{:id => "#{dom_id course}"}
-  %h2= course.title
+  %h3= course.title
   %p
     %strong Price:
     = course.price
   %p
     %strong Instructor:
     = course.instructor
-
-  - if with_lessons
-    - course.lessons.each do |lesson|
-      %h3= lesson.title
-      %p= lesson.description
 

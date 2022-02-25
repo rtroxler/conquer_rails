@@ -1,21 +1,23 @@
 %p{:style => "color: green"}= notice
 = render @course
 
+%span
+  Lessons:
+
 - @course.lessons.each do |lesson|
-  %h3= lesson.title
+  %strong= lesson.title
   %p= lesson.description
 
-%h4 Add a Lesson:
+%h5 Add a Lesson:
 = form_for [@course, Lesson.new], html: { id: 'lesson-form' } do |f|
-  %p
-    = f.label :title
-    %br
-    = f.text_field :title
+  = f.label :title
+  %br
+  = f.text_field :title
 
-  %p
-    = f.label :description
-    %br
-    = f.text_field :description
+  %br
+  = f.label :description
+  %br
+  = f.text_area :description
 
   = f.submit 'Submit'
 
